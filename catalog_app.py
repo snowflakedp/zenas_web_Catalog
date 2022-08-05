@@ -7,6 +7,8 @@ streamlit.title('My Parents New Healthy Diner')
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 
+streamlit.stop()
+
 # run a snowflake query and put it all in a var called my_catalog
 my_cur.execute("select color_or_style from catalog_for_website")
 my_catalog = my_cur.fetchall()
@@ -14,7 +16,7 @@ my_catalog = my_cur.fetchall()
 # put the dafta into a dataframe
 df = pandas.DataFrame(my_catalog)
 
-streamlit.stop()
+
 
 # temp write the dataframe to the page so I Can see what I am working with
 # streamlit.write(df)
